@@ -164,10 +164,10 @@ int mfc_init_buffer(void)
 			free_node->size = mfc_port1_memsize;
 		} else {
 			free_node->start_addr = mfc_get_port0_buff_paddr();
-#ifdef CONFIG_MACH_ARIES
-			free_node->size = mfc_port0_memsize -
-#else // CONFIG_MACH_P1
+#ifdef CONFIG_S5P_HUGEMEM
 			free_node->size = mfc_port1_memsize -
+#else
+			free_node->size = mfc_port0_memsize -
 #endif
 				(mfc_get_port0_buff_paddr() - mfc_get_fw_buff_paddr());
 		}
